@@ -124,8 +124,16 @@ export const logoutUser = async(req, res) => {
         const response1 = await clearSessionUserId(req.user.userId);
 
         if(response || response1){
-            res.clearCookie("AccessToken")
-            res.clearCookie("RefreshToken");
+
+            const cookieOptions = {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production", // true on Vercel
+                sameSite: "None",
+                
+            }
+
+            res.clearCookie("AccessToken", cookieOptions)
+            res.clearCookie("RefreshToken", cookieOptions);
             return res.status(200).json({message: "loggedout sucessfully"});
         }
 
