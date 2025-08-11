@@ -36,6 +36,8 @@ export const Login = () => {
         } catch (error) {
             console.log(error.response);
             toast.error(error.response.data.extraDetails? error.response.data.extraDetails : error.response.data.message);
+        } finally {
+            setLoading(false); 
         }
         
     }
