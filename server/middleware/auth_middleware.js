@@ -26,10 +26,11 @@ export const authUser = async(req, res ,next) => {
 
             req.user = userInfoToSend;
 
-            res.cookie("AccessToken", newAccessToken,{httpOnly : true, secure : true, maxAge: 900000});  //15 min
+            res.cookie("AccessToken", newAccessToken,{httpOnly : true, secure : true, sameSite: "None", maxAge: 900000});  //15 min
             res.cookie("RefreshToken",newRefreshToken,{
                     httpOnly: true,
                     secure: true,
+                    sameSite: "None",
                     maxAge: 604800000   //7 days
                 })
 
