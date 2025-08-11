@@ -15,7 +15,7 @@ import { razorpayRouter } from "./routers/razorpay.router.js";
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173", // or whatever your frontend runs on
+  origin: process.env.BASE_URL, // or whatever your frontend runs on
   credentials: true
 }));
 
@@ -36,8 +36,10 @@ app.use("/",razorpayRouter);
 //for handling global error
 app.use(error_Middleware);
 
+const PORT = process.env.PORT || 3000
+
 connection_db().then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(PORT, () => {
     console.log(`server is running on port : ${process.env.PORT}`);
     });
 });
