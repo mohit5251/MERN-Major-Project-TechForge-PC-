@@ -83,6 +83,16 @@ export const refreshTokens = async(token) => {
         
 
         if (!currentSession) {
+            res.clearCookie("AccessToken", {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            });
+            res.clearCookie("RefreshToken", {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            });
             throw new Error("Session expired, please login again.");
         }
 
