@@ -69,7 +69,7 @@ export const findUserById = async(userId) => {
 
 
 //Auth Middleware ( Refresh Token Logic )
-export const refreshTokens = async(token) => {
+export const refreshTokens = async(token, req, res) => {
 
     try {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);

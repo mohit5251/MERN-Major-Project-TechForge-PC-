@@ -22,7 +22,7 @@ export const authUser = async(req, res ,next) => {
 
     if(RefreshTokenCookie){
         try {
-            const {newAccessToken, newRefreshToken, user, userInfoToSend} = await refreshTokens(RefreshTokenCookie);
+            const {newAccessToken, newRefreshToken, user, userInfoToSend} = await refreshTokens(RefreshTokenCookie, req, res);
 
             req.user = userInfoToSend;
 
