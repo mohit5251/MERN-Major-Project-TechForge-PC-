@@ -30,7 +30,7 @@ export const ShippingAddressForm = ({formData, handleChange, handleSubmit, loadi
 
                 <div className="col-md-6">
                     <label className="form-label">Phone Number</label>
-                    <input type="tel" className="form-control" name="phone" value={formData.phone} onChange={handleChange} required />
+                    <input type="number" className="form-control" name="phone" value={formData.phone} onChange={handleChange} required />
                 </div>
 
                 <div className="col-12">

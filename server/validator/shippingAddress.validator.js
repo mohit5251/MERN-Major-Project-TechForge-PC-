@@ -11,7 +11,7 @@ export const shippingAddressSchema = z.object({
     phone: z.string({required_error: "Phone number is required"})
     .trim()
     .min(10, {message: "phone number must be atleast of 10 digits"})
-    .max(12,{message: "phone number be smaller than 12 digits"}),
+    .max(10,{message: "phone number be smaller than 10 digits"}),
 
     addressLine1: z.string({required_error: "Address is required"})
     .trim()
